@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block pagetitle%}Shows{% endblock %}
+
+{% block title%} Shows {% endblock %}
+
+{% block description%}
+  <h2>This are the five most rated shows:</h2>
+{% endblock %}
+
+{% block card_content%}
+  <table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Runtime (min)</th>
+        <th>Genres</th>
+        <th>Rating</th>
+        <th>Trailer</th>
+        <th>Homepage</th>
+        <th class="action-column">e</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for show in shows %}
+    <tr>
+        <td>
+            <a href="{{ '/tv-show/' + (show['id'] | string) }}">{{ show['title'] }}</a>
+        </td>
+        <td>{{ show['year'] }}</td>
+        <td>{{ show['runtime'] }}</td>
+        <td>{{ show['genre'] }}</td>
+        <td>{{ show['rating'] }}</td>
+        <td>
+            {% if show['trailer'] == None %}
+            No URL
+            {% else %}
+            <a href="{{ show['trailer'] }}">{{ show['trailer'] }}</a>
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ '/tv-show/' + (show['id'] | string) }}">Link</a>
+        </td>
+        <td class="action-column">
+            <button type="button" class="icon-button"><i class="fa fa-edit fa-fw"></i></button>
+            <button type="button" class="icon-button"><i class="fa fa-trash fa-fw"></i></button>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
