@@ -5,7 +5,7 @@ def get_shows():
     return data_manager.execute_select('SELECT id, title FROM shows;')
 
 
-def get_shows_most_rated():
+def get_shows_most_rated(per_page=15, page=0):
     query = """
             SELECT
                 shows.id,
@@ -21,8 +21,9 @@ def get_shows_most_rated():
             GROUP BY shows.id
             ORDER BY rating 
                 DESC 
-                LIMIT 15
+                LIMIT %s
+                OFFSET %s
             """
-    return data_manager.execute_select(query)
+    return data_manager.execute_select(query, (per_page, page))
 
 # 'SELECT id, title, year, genre, runtime, rating FROM shows ORDER BY rating DESC LIMIT 5 '
