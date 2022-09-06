@@ -18,6 +18,7 @@ def get_shows_per_page(per_page, offset):
     return shows
 
 
+@app.route('/shows')
 @app.route('/shows/most-rated')
 def most_rated():
     page = int(request.args.get("page", 1))
