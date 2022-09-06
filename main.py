@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request
 from data import queries
-from flask_paginate import Pagination, get_page_args
+from flask_paginate import Pagination
 import math
 from dotenv import load_dotenv
 
@@ -27,7 +27,10 @@ def most_rated():
     pagination_shows = get_shows_per_page(per_page=per_page, offset=offset)
     pagination = Pagination(page=page, per_page=per_page, total=total_shows,
                             css_framework="bootstrap4")
-    return render_template('shows-most-rated.html', shows=pagination_shows, page=page, per_page=per_page, pagination=pagination)
+    return render_template('shows-most-rated.html', shows=pagination_shows,
+                                                    page=page,
+                                                    per_page=per_page,
+                                                    pagination=pagination)
 
 
 @app.route('/show/<id>')
