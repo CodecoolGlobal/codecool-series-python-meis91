@@ -33,12 +33,22 @@ def most_rated():
                                                     per_page=per_page,
                                                     pagination=pagination)
 
-
+@app.route('/show/<id>')
 @app.route('/tv-show/<id>')
 def show(id):
-    show = queries.get_show(id)
-    print(show[0])
-    return render_template('show.html', show=show[0])
+    show = queries.get_show(id)[0]
+    print(show)
+    runtime = show["runtime"]
+    yt_link = show["trailer"]
+    if runtime / 60 > 1:
+        hours = int(runtime / 60)
+        min = runtime % 60
+        runtime = f"{hours}h {min}"
+        show["runtime"] = runtime
+    if yt_link:
+        yt_link = yt_link.replace("watch?v=", "embed/")
+        show["trailer"] = yt_link
+    return render_template('show.html', show=show)
 
 
 

@@ -20,17 +20,19 @@
 {% block card_content %}
     <div class="card detailed-view">
             <div class="row">
-                <div id="player"></div>
-{#                <iframe src="{{ show.trailer }}"></iframe>#}
+                <div id="player">
+                   <iframe class="trailer" src="{{ show.trailer }}"></iframe>
+                </div>
                 <div class="col col-twothird">
                     <h2>{{ show.title }}</h2>
+                    <h4>{{ show.rating }} &#9734;</h4>
                     <p class="small grayed">{{ show.runtime }} min<span class="separator">|</span> {{ show.genre }} <span
                             class="separator">|</span>{{ show.year }}</p>
-                    <p>{{ show.overview }}</p>
+                    <p><b>Description:</b>{{ show.overview }}</p>
                 </div>
             </div>
             <div>
-                <p><b>Actors:</b>&nbsp;{{ show.actors }}</p>
+                <p><b>Actors: </b>&nbsp;{{ show.actors }}</p>
             </div>
         </div>
 {% endblock %}
