@@ -34,11 +34,11 @@ def most_rated():
                                                     pagination=pagination)
 
 
-@app.route('/show/<id>')
+@app.route('/tv-show/<id>')
 def show(id):
     show = queries.get_show(id)
-    print(show)
-    return render_template('show.html', show=show)
+    print(show[0])
+    return render_template('show.html', show=show[0])
 
 
 

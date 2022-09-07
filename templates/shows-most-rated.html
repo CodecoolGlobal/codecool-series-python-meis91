@@ -2,13 +2,18 @@
 
 {% block pagetitle%}Shows{% endblock %}
 
-{% block title%} Shows {% endblock %}
+{% block title%}
+<h1 class="title text-center">Shows </h1>
+{% endblock %}
 
 {% block description%}
+<div class="card">
   <h2>This are the five most rated shows:</h2>
+</div>
 {% endblock %}
 
 {% block card_content%}
+<div class="card">
   <table class="table table-sortable">
     <thead>
     <tr>
@@ -54,5 +59,5 @@
     {{ pagination.links }}
     {{ pagination.info }}
 </div>
-
+</div>
 {% endblock %}

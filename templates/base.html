@@ -43,14 +43,16 @@
         </div>
     </header>
 <section>
-        <h1 class="title text-center">{% block title %}{% endblock %}</h1>
-        <div class="card">
-            {% block description %}{% endblock %}
-        </div>
-        <div class="card">
-            {% block card_content%}{% endblock %}
-        </div>
-    </section>
+    {% block navigation %}{% endblock %}
+
+    {% block title %}{% endblock %}
+
+    {% block description %}{% endblock %}
+
+
+    {% block card_content%}{% endblock %}
+
+</section>
     <footer>
         Copyright, bla-bla
     </footer>
@@ -59,6 +61,6 @@
     <div class="dark-blue-layer"></div>
     <div class="light-blue-layer"></div>
 </div>
-    <script src="../static/js/table-sort.js"></script>
+    {% block script %}{% endblock %}
 </body>
 </html>
