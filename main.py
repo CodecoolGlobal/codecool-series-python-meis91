@@ -48,7 +48,9 @@ def show(id):
     if yt_link:
         yt_link = yt_link.replace("watch?v=", "embed/")
         show["trailer"] = yt_link
-    return render_template('show.html', show=show)
+    seasons = queries.get_season(id)
+    print(seasons)
+    return render_template('show.html', show=show, seasons=seasons)
 
 
 

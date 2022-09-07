@@ -35,6 +35,28 @@
                 <p><b>Actors: </b>&nbsp;{{ show.actors }}</p>
             </div>
         </div>
+    <div class="card">
+    <h2>Seasons</h2>
+    <br>
+      <table class="table table-sortable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Season</th>
+                <th>Overview</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for season in seasons %}
+            <tr>
+                <td>{{ season.season_number }}</td>
+                <td>{{ season.title }}</td>
+                <td>{{season.overview }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
 {% endblock %}
 
 {% block script %}

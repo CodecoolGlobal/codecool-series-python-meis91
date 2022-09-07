@@ -50,4 +50,15 @@ def get_show(id):
             """
     return data_manager.execute_select(query, (id,))
 
+
+def get_season(show_id):
+    query = """ SELECT
+                    show_id,
+                    season_number,
+                    title,
+                    overview   
+                FROM seasons
+                WHERE show_id = %s
+                """
+    return data_manager.execute_select(query, (show_id,))
 # 'SELECT id, title, year, genre, runtime, rating FROM shows ORDER BY rating DESC LIMIT 5 '
