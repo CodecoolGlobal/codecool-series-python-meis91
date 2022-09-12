@@ -22,6 +22,7 @@ function tableSort(table, column, asc= true){
 
 //    Remove all existing TRs from table
     while (tableBody.firstChild){
+        console.log(tableBody.firstChild)
         tableBody.removeChild(tableBody.firstChild);
     }
 //    Re-add the sorted rows
@@ -31,7 +32,6 @@ function tableSort(table, column, asc= true){
     table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
     table.querySelector(`th:nth-child(${column +1})`).classList.toggle("th-sort-asc", asc);
     table.querySelector(`th:nth-child(${column +1})`).classList.toggle("th-sort-desc", !asc);
-
 }
 
 document.querySelectorAll(".table-sortable th").forEach(headerCell => {

@@ -20,15 +20,17 @@
 {% block card_content %}
     <div class="card detailed-view">
             <div class="row">
+                {% if show.trailer %}
                 <div id="player">
                    <iframe class="trailer" src="{{ show.trailer }}"></iframe>
                 </div>
+                {% endif %}
                 <div class="col col-twothird">
                     <h2>{{ show.title }}</h2>
                     <h4>{{ show.rating }} &#9734;</h4>
                     <p class="small grayed">{{ show.runtime }} min<span class="separator">|</span> {{ show.genre }} <span
                             class="separator">|</span>{{ show.year }}</p>
-                    <p><b>Description:</b>{{ show.overview }}</p>
+                    <p><b>Description: </b>{% if show.overview  %}{{show.overview }}{% endif %}</p>
                 </div>
             </div>
             <div>
@@ -51,7 +53,7 @@
             <tr>
                 <td>{{ season.season_number }}</td>
                 <td>{{ season.title }}</td>
-                <td>{{season.overview }}</td>
+                <td>{% if season.overview  %}{{season.overview }}{% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>
