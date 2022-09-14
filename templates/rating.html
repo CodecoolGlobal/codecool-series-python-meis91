@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block pagetitle%}Rating{% endblock %}
+
+{% block title%}
+<h1 class="title text-center">Rating </h1>
+{% endblock %}
+
+{% block description %}
+<div class="card">
+  <h2>Shows with the most actors and there rating compared to the average:</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+ <div class="card">
+        <table class="table table-sortable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Actors</th>
+                    <th>Average Rating Divergens</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+
+            </tbody>
+        </table>
+ </div>
+{% endblock %}
+
+{% block script %}
+    <script src="../static/js/rating.js"></script>
+{% endblock %}

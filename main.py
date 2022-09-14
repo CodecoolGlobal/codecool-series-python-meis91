@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 from data import queries
 from flask_paginate import Pagination
 import math
@@ -53,6 +53,44 @@ def show(id):
     return render_template('show.html', show=show, seasons=seasons)
 
 
+@app.route('/actors')
+def get_actors():
+    actors = queries.get_actors()
+    return render_template('actors.html', actors=actors)
+
+
+@app.route('/api/actors/show')
+def get_actors_show():
+    actor_id = request.args["actorId"]
+    print(actor_id)
+    shows = queries.get_actors_shows(actor_id)
+    print(shows)
+    return jsonify(shows)
+
+
+@app.route('/rating')
+def rating():
+    return render_template('rating.html')
+
+
+@app.route('/api/rating')
+def get_shows_rating():
+    shows = queries.get_shows_most_actors()
+    return jsonify(shows)
+
+
+@app.route('/ordered-shows')
+def ordered_shows():
+    return render_template('ordered-shows.html')
+
+
+@app.route('/api/ordered-shows')
+def get_ordered_shows():
+    direction = request.args["direction"]
+    print(direction)
+    shows = queries.get_ordered_shows(direction)
+    print(shows)
+    return jsonify(shows)
 
 
 @app.route('/design')

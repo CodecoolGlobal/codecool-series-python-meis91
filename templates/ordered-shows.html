@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block description %}
+<div class="card">
+  <h2>Ordered Shows:</h2>
+</div>
+ {% endblock %}
+
+{% block content %} Ordered Shows
+ <div class="card">
+        <table class="table table-sortable">
+            <thead>
+                <tr>
+                    <th class="column" id="title" data-direction="DESC">Title</th>
+                    <th class="column" id="episode-count">Episode Count</th>
+                    <th class="column" id="rating">Rating</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+
+            </tbody>
+        </table>
+ </div>
+{% endblock %}
+
+{% block script %}
+ <script src="../static/js/ordered-shows.js"></script>
+{% endblock %}

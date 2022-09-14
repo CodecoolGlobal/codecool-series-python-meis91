@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block description %}
+<div class="card">
+  <h2>Her is a List with all the actors:</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="card detailed-view">
+        <dl>
+            {% for actor in actors %}
+            <dt class="actors" >
+                {{ actor.name }}
+            <button class="btn-actors" data-actor-id="{{ actor.id }}">Series</button>
+            </dt>
+    {% endfor %}
+        </dl>
+
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="../static/js/actors.js"></script>
+{% endblock %}
