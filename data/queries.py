@@ -120,3 +120,45 @@ def get_ordered_shows(direction):
     """).format(dir=sql.SQL(direction))
     print(query)
     return data_manager.execute_select(query)
+
+
+def get_all_genres():
+    query = """
+    SELECT
+        name AS genre
+    FROM genres
+    """
+    return data_manager.execute_select(query)
+
+
+def get_actors(search_term, genre):
+    query = """
+            SELECT
+                a.name,
+                g.name AS genre
+            FROM shows
+            JOIN show_characters sc on shows.id = sc.show_id
+            JOIN actors a on a.id = sc.actor_id
+            JOIN show_genres sg on shows.id = sg.show_id
+            JOIN genres g on g.id = sg.genre_id
+            WHERE a.name LIKE %s AND g.name = %s;
+    """
+    return data_manager.execute_select(query,(search_term, genre,))
+
+
+def actors_birthday():
+    query = """
+            SELECT
+                name,
+                birthday,
+                EXTRACT(DAY FROM birthday)::integer AS bday_day,
+                death
+            FROM actors
+            WHERE birthday IS NOT NULL AND death IS NULL
+            GROUP BY name, birthday, death
+            ORDER BY birthday
+                    ASC
+                    LIMIT 100;
+            """
+    return data_manager.execute_select(query)
+

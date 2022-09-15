@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+
+        <label for="genre-choice">Select a Genre</label>
+        <select class="filter" id="genre-choice">
+            {% for type in genres %}
+            <option value="{{ type.genre }}">{{ type.genre }}</option>
+            {% endfor %}
+        </select>
+
+        <form>
+            <label for="actor-name">Actor Name</label>
+            <input class="filter" type="search" id="actor-name">
+        </form>
+        <ul id="actors">
+
+        </ul>
+
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="../static/js/filter-actors.js"></script>
+{% endblock %}

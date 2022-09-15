@@ -93,6 +93,34 @@ def get_ordered_shows():
     return jsonify(shows)
 
 
+@app.route('/filter-actors')
+def filter_actors():
+    genres = queries.get_all_genres()
+    print(genres)
+    return render_template('filter-actors.html', genres=genres)
+
+
+@app.route('/api/search/actor')
+def get_search_actors():
+    genre = request.args["genre"]
+    actor = request.args["actor"]
+    actor = "%"+actor+"%"
+    actors = queries.get_actors(actor, genre)
+    print(actors)
+    return jsonify(actors)
+
+
+@app.route('/actor-birthday')
+def actor_birthday():
+    return render_template('actor-birthday.html')
+
+@app.route('/api/actors/birthday')
+def get_actors_birthday():
+    actors = queries.actors_birthday()
+    print(actors)
+    return jsonify(actors)
+
+
 @app.route('/design')
 def design():
     return render_template('design.html')

@@ -1,5 +1,5 @@
 /**
- * SOrts a HTML table
+ * Sorts a HTML table
  *
  * @param {HTMLTableElement}
  * @param {number}
@@ -10,6 +10,7 @@ function tableSort(table, column, asc= true){
     const directionModifier = asc ? 1 : -1;
     const tableBody = table.tBodies[0];
     const rows = Array.from(tableBody.querySelectorAll("tr"));
+    console.log(rows)
 
 
 //    Sort each row
@@ -22,7 +23,7 @@ function tableSort(table, column, asc= true){
 
 //    Remove all existing TRs from table
     while (tableBody.firstChild){
-        console.log(tableBody.firstChild)
+        
         tableBody.removeChild(tableBody.firstChild);
     }
 //    Re-add the sorted rows
